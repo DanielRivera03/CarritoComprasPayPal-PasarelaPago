@@ -1,0 +1,12 @@
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Users\dany_\OneDrive\Escritorio\Tienda\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\dany_\OneDrive\Escritorio\Tienda\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\dany_\OneDrive\Escritorio\Tienda\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\dany_\OneDrive\Escritorio\Tienda\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\dany_\OneDrive\Escritorio\Tienda\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\dany_\OneDrive\Escritorio\Tienda\CapaEntidad\obj\Debug\CapaEntidad.pdb

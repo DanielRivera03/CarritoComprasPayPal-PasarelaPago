@@ -1,0 +1,6 @@
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaEntidad\bin\Release\CapaEntidad.dll
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaEntidad\bin\Release\CapaEntidad.pdb
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaEntidad\obj\Release\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaEntidad\obj\Release\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaEntidad\obj\Release\CapaEntidad.dll
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaEntidad\obj\Release\CapaEntidad.pdb

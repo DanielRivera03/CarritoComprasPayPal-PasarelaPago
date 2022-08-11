@@ -1,0 +1,122 @@
+﻿<!--
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░        CARRITO DE COMPRAS / MVC ASP.NET ADO.NET          ░
+░--------------------------------------------------------- ░
+░- -> IDEA ORIGINAL POR PARTE DE [ CODIGO ESTUDIANTE ]     ░
+░--------------------------------------------------------- ░
+░- -> ADECUADO Y MODIFICADO POR DANIEL RIVERA              ░
+░--------------------------------------------------------- ░
+░- -> C# - ASP.NET / ADO.NET => .NET FRAMEWORK 4.7 up+     ░
+░- -> GITHUB: (danielrivera03)                             ░
+░     https://github.com/DanielRivera03                    ░
+░--------------------------------------------------------- ░
+░- -> TODOS LOS DERECHOS RESERVADOS © 2022                 ░
+░                                                          ░
+░        ♥♥ HECHO CON ALGUNAS TAZAS DE CAFE ♥♥             ░
+░                                                          ░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+-> POR FAVOR REALIZAR TODAS LAS ADECUACIONES PERTINENTES
+
+-->
+@model CapaEntidad.Cliente
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrar</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Nueva Cuenta Clientes</h3></div>
+                                <div class="card-body">
+                                    <form action="@Url.Action("Registrar","Acceso")" method="post">
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    @Html.TextBoxFor(modelo => modelo.Nombres, new { @class = "form-control", @id = "txtnombre", @placeholder = ".", @value = ViewData["Nombres"] })
+                                                    @Html.Label("txtnombre", "Nombres")
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    @Html.TextBoxFor(modelo => modelo.Apellidos, new { @class = "form-control", @id = "txtapellido", @placeholder = ".", @value = ViewData["Apellidos"] })
+                                                    @Html.Label("txtapellido", "Apellidos")
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            @Html.TextBoxFor(modelo => modelo.Correo, new { @class = "form-control", @id = "txtcorreo", @placeholder = ".", @value = ViewData["Correo"] })
+                                            @Html.Label("txtcorreo", "Correo")
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    @Html.PasswordFor(modelo => modelo.Clave, new { @class = "form-control", @id = "txtclave", @placeholder = "." })
+                                                    @Html.Label("txtclave", "Contraseña")
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    @Html.PasswordFor(modelo => modelo.ConfirmarClave, new { @class = "form-control", @id = "txtconfirmarclave", @placeholder = "." })
+                                                    @Html.Label("txtconfirmarclave", "Repetir Contraseña")
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- MENSAJE ERROR -->
+                                        @{
+                                            if (ViewBag.Error != null)
+                                            {
+                                                <div class="row mb-3">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        @ViewBag.Error
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                        <div class="mt-4 mb-0">
+                                            <div class="d-grid"><button class="btn btn-primary btn-block" type="submit">Crear Nueva Cuenta</button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer text-center py-3">
+                                    <div class="small"><a href="@Url.Action("Index","Acceso")">¿No es lo que buscas? ¿Ya tienes una cuenta? Inicia sesi&oacute;n</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <div id="layoutAuthentication_footer">
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+</body>
+</html>

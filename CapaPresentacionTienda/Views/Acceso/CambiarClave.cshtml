@@ -1,0 +1,116 @@
+﻿<!--
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░        CARRITO DE COMPRAS / MVC ASP.NET ADO.NET          ░
+░--------------------------------------------------------- ░
+░- -> IDEA ORIGINAL POR PARTE DE [ CODIGO ESTUDIANTE ]     ░
+░--------------------------------------------------------- ░
+░- -> ADECUADO Y MODIFICADO POR DANIEL RIVERA              ░
+░--------------------------------------------------------- ░
+░- -> C# - ASP.NET / ADO.NET => .NET FRAMEWORK 4.7 up+     ░
+░- -> GITHUB: (danielrivera03)                             ░
+░     https://github.com/DanielRivera03                    ░
+░--------------------------------------------------------- ░
+░- -> TODOS LOS DERECHOS RESERVADOS © 2022                 ░
+░                                                          ░
+░        ♥♥ HECHO CON ALGUNAS TAZAS DE CAFE ♥♥             ░
+░                                                          ░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+-> POR FAVOR REALIZAR TODAS LAS ADECUACIONES PERTINENTES
+         
+-->
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CambiarClave</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Cambiar Contrase&ntilde;a</h3></div>
+                                <div class="card-body">
+                                    <form action="@Url.Action("CambiarClave", "Acceso")" method="post">
+                                        <input class="form-control" type="hidden" value="@TempData["IdCliente"]" name="idcliente" />
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" id="inputPassword" type="password" name="claveactual" value="@ViewData["vclave"]" />
+                                                    <label for="inputPassword">Contrase&ntilde;a Actual</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" id="inputPassword" type="password" name="nuevaclave" />
+                                                    <label for="inputPassword">Contrase&ntilde;a Nueva</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" id="inputPassword" type="password" name="confirmarclave" />
+                                                    <label for="inputPassword">Repita Contrase&ntilde;a Nueva</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- MENSAJE ERROR -->
+                                        @{
+                                            if (ViewBag.Error != null)
+                                            {
+                                                <div class="row mb-3">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        @ViewBag.Error
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+
+                                        <div class="mt-4 mb-0">
+                                            <div class="d-grid"><button class="btn btn-primary btn-block" type="submit">Procesar Datos</button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer text-center py-3">
+                                    <div class="small"><a href="@Url.Action("Index","Acceso")">Regresar al inicio</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <div id="layoutAuthentication_footer">
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+﻿<!--
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░        CARRITO DE COMPRAS / MVC ASP.NET ADO.NET          ░
+░--------------------------------------------------------- ░
+░- -> IDEA ORIGINAL POR PARTE DE [ CODIGO ESTUDIANTE ]     ░
+░--------------------------------------------------------- ░
+░- -> ADECUADO Y MODIFICADO POR DANIEL RIVERA              ░
+░--------------------------------------------------------- ░
+░- -> C# - ASP.NET / ADO.NET => .NET FRAMEWORK 4.7 up+     ░
+░- -> GITHUB: (danielrivera03)                             ░
+░     https://github.com/DanielRivera03                    ░
+░--------------------------------------------------------- ░
+░- -> TODOS LOS DERECHOS RESERVADOS © 2022                 ░
+░                                                          ░
+░        ♥♥ HECHO CON ALGUNAS TAZAS DE CAFE ♥♥             ░
+░                                                          ░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+-> POR FAVOR REALIZAR TODAS LAS ADECUACIONES PERTINENTES
+
+-->
+@model List<CapaEntidad.DetalleVenta>
+@{
+    ViewBag.Title = "MisCompras";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-sm-12">
+            @{
+                if (Model.Count > 0)
+                {
+                    // SI EXISTEN ELEMENTOS = MOSTRAR TODOS LOS ARTICULOS PROCESADOS Y COMPRADOS POR CLIENTES
+                    foreach (var item in Model)
+                    {
+                        <div class="row mb-3">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-body bg-light">
+                                        <h6>ID TRANSACCION: <strong>@item.IdTransaccion</strong></h6>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Imagen</th>
+                                                        <th>Producto</th>
+                                                        <th>Precio $. USD</th>
+                                                        <th>Cantidad</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-light">
+                                                    <tr>
+                                                        <td>
+                                                            <img class="card-img-top mb-5 mb-md-0" src="data:image/@item.oProducto.Extension;base64,@item.oProducto.Base64" style="width: 125px; height: 125px;" />
+                                                        </td>
+                                                        <td valign="middle">
+                                                            @item.oProducto.Nombre
+                                                        </td>
+                                                        <td valign="middle">
+                                                            $ @item.oProducto.Precio USD.
+                                                        </td>
+                                                        <td valign="middle">
+                                                            @item.Cantidad
+                                                        </td>
+                                                        <td valign="middle">
+                                                            $ @item.Total USD.
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+
+                }
+            }
+        </div>
+    </div>
+</div>
+
+

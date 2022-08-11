@@ -1,0 +1,80 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reestablecer</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Recuperar Cuentas Clientes</h3></div>
+                                <div class="card-body">
+                                    <div class="small mb-3 text-muted">Por favor ingrese su correo, y nuestro sistema verificar&aacute; si su usuario existe. De ser
+                                    el caso, le enviaremos un correo y siga las respectivas instrucciones ah&iacute; descritas.</div>
+                                    <form action="@Url.Action("Reestablecer","Acceso")" method="post">
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" name="correo" type="email" placeholder="Correo" />
+                                            <label for="inputEmail">Ingrese su correo</label>
+                                        </div>
+                                        <!-- MENSAJE ERROR -->
+                                        @{
+                                            if (ViewBag.Error != null)
+                                            {
+                                                <div class="row mb-3">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        @ViewBag.Error
+                                                    </div>
+                                                </div>
+                                            }
+                                            if (ViewBag.Success != null)
+                                            {
+                                                <div class="form-floating mb-3">
+                                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                        <strong>Perfecto! </strong> @ViewBag.Success
+                                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                            <a class="small" href="@Url.Action("Index","Acceso")">Regresar al inicio</a>
+                                            <button class="btn btn-primary" type="submit">Procesar Datos</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <div id="layoutAuthentication_footer">
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#!">Tienda Comercial</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="@Url.Action("Index","Tienda")">Inicio</a></li>
+                </ul>
+                <form class="d-flex">
+                    @if (Session["Cliente"] == null)
+                    {
+                        // CLIENTE NO HA INICIADO SESION
+                        <a class="btn btn-outline-dark" aria-current="page" href="@Url.Action("Index","Acceso")"><i class="fas fa-house-user me-1"></i> Iniciar Sesi&oacute;n</a>
+
+                    }
+                    else
+                    {
+                        // CLIENTE HA INICIADO SESION
+                        <a class="btn btn-outline-dark" href="@Url.Action("Carrito","Tienda")">
+                            <i class="fas fa-shopping-cart me-1"></i>
+                            Mi Carrito
+                            <span class="badge bg-dark text-white ms-1 rounded-pill" id="cantidadcarrito">0</span>
+                        </a>
+                        <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">@User.Identity.Name</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("MisCompras","Tienda")">Mis Compras</a></li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("CerrarSesion","Acceso")">Cerrar Sesi&oacute;n</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    }
+                </form>
+            </div>
+        </div>
+    </nav>
+    @RenderBody()
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+            MostrarCantidadCarrito();
+        })
+        // MOSTRAR CANTIDAD DE PRODUCTOS AGREGADOS EN EL CARRITO DE COMPRAS
+        function MostrarCantidadCarrito() {
+            if ($("#cantidadcarrito").length > 0) {
+                jQuery.ajax({
+                    url: '@Url.Action("CantidadEnCarrito","Tienda")',
+                    type: 'get',
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $("#cantidadcarrito").text(data.cantidad)
+                    }
+                });
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaDatos\bin\Release\CapaDatos.dll
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaDatos\bin\Release\CapaDatos.pdb
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaDatos\bin\Release\CapaEntidad.dll
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaDatos\bin\Release\CapaEntidad.pdb
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaDatos\obj\Release\CapaDatos.csproj.AssemblyReference.cache
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaDatos\obj\Release\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaDatos\obj\Release\CapaDatos.csproj.CopyComplete
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaDatos\obj\Release\CapaDatos.dll
+C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\CapaDatos\obj\Release\CapaDatos.pdb

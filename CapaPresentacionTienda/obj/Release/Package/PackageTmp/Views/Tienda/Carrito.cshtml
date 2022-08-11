@@ -1,0 +1,406 @@
+﻿
+@{
+    ViewBag.Title = "Carrito";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class=" container my-5">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <!-- PRODUCTOS INFORMACION-->
+                        <div class="col-sm-8">
+                            <div class="me-2">
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="ms-2 mt-2">Detalle Final - Carrito de Compras</h5>
+                                    <a class="btn btn-success" href="@Url.Action("Index","Tienda")"><i class="fas fa-cart-plus"></i> Seguir Comprando</a>
+                                </div>
+                                <hr class="mt-2 mb-2" />
+                                <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                                        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                    </svg>
+                                    <div>
+                                        Gracias por su compra, nuestro canal de pago es a trav&eacute;s de Paypal, por lo cual usted podr&aacute; efectuar su pago ya sea
+                                        desde su cuenta asociada, o bien desde una tarjeta de cr&eacute;dito o d&eacute;bito.
+                                    </div>
+                                </div>
+                                <div id="productos-carrito">
+                                    <div class="card mb-2 card-producto">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-2 align-self-center d-flex justify-content-center">
+                                                    <img style="width: 105px; height: 105px;" class="rounded" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" />
+                                                </div>
+                                                <div class="col-sm-4 align-self-center">
+                                                    <span class="font-weight-bold d-block">Marca</span>
+                                                    <span>Nombre del Producto</span>
+                                                </div>
+                                                <div class="col-sm-2 align-self-center">
+                                                    <span>Precio Total: $ 0.00 USD</span>
+                                                </div>
+                                                <div class="col-sm-2 align-self-center">
+                                                    <div class="d-flex">
+                                                        <button class="btn btn-outline-info btn-restar rounded-0"><i class="fas fa-minus"></i></button>
+                                                        <input class="form-control input-cantidad p-1 text-center rounded-0" disabled style="width: 40px;" />
+                                                        <button class="btn btn-outline-success btn-sumar rounded-0"><i class="fas fa-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2 align-self-center">
+                                                    <button class="btn btn-outline-danger btn-eliminar rounded-0"><i class="fas fa-trash"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- SUMA TOTAL CARRITO -->
+                                <div class="d-flex justify-content-end">
+                                    <label class="align-self-center"><strong>Total Cancelar: $<span id="total">0.00</span> USD</strong></label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PROCESAR DATOS -->
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <div class="card-body bg-dark">
+                                    <h5 class="card-title text-white text-center">Detalle Env&iacute;o</h5>
+                                    <form>
+                                        <div class="mb-2">
+                                            <label for="cbodepartamento" class="form-label text-white mt-4">Departamento</label>
+                                            <select class="form-select form-select-sm" id="cbodepartamento"></select>
+                                        </div>
+                                        <div class="mb-2">
+                                            <label for="cboprovincia" class="form-label text-white">Municipio</label>
+                                            <select class="form-select form-select-sm" id="cboprovincia"></select>
+                                        </div>
+                                        <div class="mb-2">
+                                            <label class="form-label text-white">Nombre Completo</label>
+                                            <input type="text" class="form-control form-control-sm" id="txtnombrecontacto" />
+                                        </div>
+                                        <div class="mb-2">
+                                            <label class="form-label text-white">Direcci&oacute;n Completa</label>
+                                            <input type="text" class="form-control form-control-sm" id="txtdireccion" />
+                                        </div>
+                                        <div class="mb-2">
+                                            <label class="form-label text-white">Tel&eacute;fono</label>
+                                            <input type="text" class="form-control form-control-sm" id="txttelefono" />
+                                        </div>
+                                        <div class="d-grid">
+                                            <button class="btn btn-danger text-white" type="button" onclick="RealizarPago()"><i class="fab fa-paypal"></i> Procesar Pago</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script>
+
+        // EJECUTAR FUNCIONES DENTRO DE TODO EL DOCUMENTO
+        $(document).ready(function () {
+            // LISTAR TODOS LOS PRODUCTOS AGREGADOS EN CARRITO DE COMPRAS
+            jQuery.ajax({
+                url: "@Url.Action("ListarProductosCarrito", "Tienda")",
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    $("#productos-carrito").html(""); // LIMPIAR CONTENEDOR PRINCIPAL
+                    $("#productos-carrito").LoadingOverlay("hide");
+                    // IMPRIMIR TODOS LOS PRODUCTOS
+                    $.each(response.data, function (i, item) {
+                        $("<div>").addClass("card mb-2 card-producto").append(
+                            $("<div>").addClass("card-body").append(
+                                $("<div>").addClass("row").append(
+                                    // COLUMNA 1
+                                    $("<div>").addClass("col-sm-2 align-self-center d-flex justify-content-center").append(
+                                        $("<img>").addClass("rounded").attr({ "src": "data:image" + item.oProducto.Extension + ";base64," + item.oProducto.Base64 }).
+                                            css({ "width": "105px", "height": "105px" })
+                                    ),
+                                    // COLUMNA 2
+                                    $("<div>").addClass("col-sm-4 align-self-center").append(
+                                        $("<span>").addClass("font-weight-bold d-block").text(item.oProducto.oMarca.Descripcion),
+                                        $("<span>").text(item.oProducto.Nombre)
+                                    ),
+                                    // COLUMNA 3
+                                    $("<div>").addClass("col-sm-2 align-self-center").append(
+                                        $("<span>").text("$ "+item.oProducto.Precio.toFixed(2) + " USD")
+                                    ),
+                                    // COLUMNA 4
+                                    $("<div>").addClass("col-sm-2 align-self-center").append(
+                                        $("<div>").addClass("d-flex").append(
+                                            $("<button>").addClass("btn btn-outline-info btn-restar rounded-0").append($("<i>").addClass("fas fa-minus")),
+                                            $("<input>").addClass("form-control input-cantidad p-1 text-center rounded-0").attr({ "disabled": "disabled" }).css({ "width": "40px" })
+                                                .data("oProducto", item.oProducto).val(item.Cantidad),
+                                            $("<button>").addClass("btn btn-outline-success btn-sumar rounded-0").append($("<i>").addClass("fas fa-plus")),
+                                        )
+                                    ),
+                                    $("<div>").addClass("col-sm-2 align-self-center").append(
+                                        $("<button>").addClass("btn btn-outline-danger btn-eliminar rounded-0").append($("<i>").addClass("fas fa-trash"), " Quitar").data("idproducto",item.oProducto.IdProducto),
+                                    )
+                                )
+                            )
+                        ).appendTo("#productos-carrito")
+                    })
+                    sumarTotal();
+                },
+                error: function (error) {
+                    $("#productos-carrito").LoadingOverlay("hide");
+                },
+                beforeSend: function () {
+                    $("#productos-carrito").LoadingOverlay("show");
+                }
+            })
+
+
+            ListarDepartamento();
+        })
+
+
+        function ListarDepartamento() {
+            $("<option>").attr({"value": "0", "disabled": "disabled", "selected": "true" }).text("Seleccione una opcion...").appendTo("#cbodepartamento");
+            jQuery.ajax({
+                url: "@Url.Action("ObtenerDepartamento", "Tienda")",
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.lista != null) {
+                        $.each(data.lista, function (i, item) {
+                            $("<option>").attr({ "value": item.IdDepartamento }).text(item.Descripcion).appendTo("#cbodepartamento");
+                        })
+                        ListarProvincia();
+                    }
+                }
+            })
+        }
+
+        function ListarProvincia() {
+            $("#cboprovincia").html("");
+            $("<option>").attr({ "value": "0", "disabled": "disabled", "selected": "true" }).text("Seleccione una opcion...").appendTo("#cboprovincia");
+            jQuery.ajax({
+                url: "@Url.Action("ObtenerMunicipio", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ IdDepartamento: $("#cbodepartamento option:selected").val() }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.lista != null) {
+                        $.each(data.lista, function (i, item) {
+                            $("<option>").attr({ "value": item.IdProvincia }).text(item.Descripcion).appendTo("#cboprovincia");
+                        })
+                        ListarDistrito();
+                    }
+                }
+            })
+        }
+
+        function ListarDistrito() {
+            $("#cbodistrito").html("");
+            $("<option>").attr({ "value": "0", "disabled": "disabled", "selected": "true" }).text("Seleccione una opcion...").appendTo("#cbodistrito");
+            jQuery.ajax({
+                url: "@Url.Action("ObtenerDistrito", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ IdDepartamento: $("#cbodepartamento option:selected").val(), IdProvincia: $("#cboprovincia option:selected").val() }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.lista != null) {
+                        $.each(data.lista, function (i, item) {
+                            $("<option>").attr({ "value": item.IdDistrito }).text(item.Descripcion).appendTo("#cbodistrito");
+                        })
+                    }
+                }
+            })
+        }
+
+        // DE ACUERDO A SELECCION DE DEPARTEMENTO -> BUSCA RELACION CON ID DE PROVINCIA -> DEPARTAMENTO SELECCIONADO
+        $("#cbodepartamento").on("change", function () {
+            ListarProvincia();
+        })
+
+        // DE ACUERDO A SELECCION DE DEPARTEMENTO -> BUSCA RELACION CON ID DE PROVINCIA -> DISTRITO -> DEPARTAMENTO SELECCIONADO
+        $("#cboprovincia").on("change", function () {
+            ListarDistrito();
+        })
+
+        // SUMAR O RESTAR TODOS LOS PRECIOS AGREGADOS EN CARRITO DE COMPRAS
+        function sumarTotal() {
+            var sumatotal = parseFloat(0);
+            $("input.input-cantidad").each(function (i) {
+                var precio = $(this).data("oProducto").Precio;
+                var cantidad = parseFloat($(this).val());
+                var subtotal = precio * cantidad;
+                sumatotal += subtotal;
+            })
+            $("#total").text(sumatotal.toFixed(2));
+            $("#total").data("sumatotal",sumatotal);
+        }
+
+
+        // SUMAR NUEVOS ELEMENTOS A PRODUCTOS AGREGADOS EN CARRITO DE COMPRAS
+        $(document).on("click", ".btn-sumar", function () {
+
+            var div_contenedor = $(this).parent("div.d-flex");
+            var input_cantidad = $(div_contenedor).find("input.input-cantidad");
+            var btn = $(this);
+            var idproducto = $(input_cantidad).data("oProducto").IdProducto;
+            jQuery.ajax({
+                url: "@Url.Action("OperacionCarrito", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ idproducto : idproducto, sumar: true }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $(btn).LoadingOverlay("hide");
+                    if (data.respuesta) {
+                        var cantidad = parseInt($(input_cantidad).val()) + 1;
+                        $(input_cantidad).val(cantidad);
+                        sumarTotal();
+                    } else {
+                        swal("", data.mensaje, "warning");
+                    }
+                },
+                beforeSend: function () {
+                    // BLOQUEAR BOTON AL MOMENTO DE PRESIONAR
+                    $(btn).LoadingOverlay("show");
+                },
+                error: function (error) {
+                    $(btn).LoadingOverlay("hide");
+                }
+            })
+
+        })
+
+        // RESTAR ELEMENTOS A PRODUCTOS AGREGADOS EN CARRITO DE COMPRAS
+        $(document).on("click", ".btn-restar", function () {
+
+            var div_contenedor = $(this).parent("div.d-flex");
+            var input_cantidad = $(div_contenedor).find("input.input-cantidad");
+            var btn = $(this);
+            var idproducto = $(input_cantidad).data("oProducto").IdProducto;
+            var cantidad = parseInt($(input_cantidad).val()) - 1;
+            // SOLAMENTE EJECUTAR COMO MINIMO SI LA CANTIDAD ES IGUAL O MAYOR A 1 [UNO]
+            if (cantidad >= 1){
+                jQuery.ajax({
+                url: "@Url.Action("OperacionCarrito", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ idproducto : idproducto, sumar: false }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $(btn).LoadingOverlay("hide");
+                    if (data.respuesta) {
+                        $(input_cantidad).val(cantidad);
+                        sumarTotal();
+                    } else {
+                        swal("", data.mensaje, "warning");
+                    }
+                },
+                beforeSend: function () {
+                    // BLOQUEAR BOTON AL MOMENTO DE PRESIONAR
+                    $(btn).LoadingOverlay("show");
+                    },
+                    error: function (error) {
+                        $(btn).LoadingOverlay("hide");
+                    }
+            })
+            }
+        })
+
+        // ELIMINAR PRODUCTOS AGREGADOS EN CARRITO DE COMPRAS
+        $(document).on("click", ".btn-eliminar", function () {
+
+            var idproducto = $(this).data("idproducto");
+            var card_producto = $(this).parents("div.card-producto");
+                jQuery.ajax({
+                url: "@Url.Action("EliminarCarrito", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ idproducto : idproducto }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.respuesta) {
+                        card_producto.remove();
+                        MostrarCantidadCarrito();
+                        sumarTotal();
+                    } else {
+                        swal("", data.mensaje, "warning");
+                    }
+                }
+            })
+        })
+
+
+        // PROCESAR PAGO CLIENTES
+        function RealizarPago() {
+            if (parseInt($("#cantidadcarrito").text()) == 0) {
+                swal("Lo Sentimos", "No existen productos en el carrito, agrega productos para continuar...", "warning");
+                return
+            }
+            if ($("#txtnombrecontacto").val() == "" || $("#txtdireccion").val() == "" || $("#txttelefono").val() == "") {
+                swal("Lo Sentimos", "Por favor debes completar todos los datos del cliente", "warning");
+                return
+            }
+
+            var venta = {
+                TotalProducto: $("input.input-cantidad").length,
+                MontoTotal: 0,
+                Contacto: $("#txtnombrecontacto").val(),
+                Telefono: $("#txttelefono").val(),
+                Direccion: $("#txtdireccion").val()
+
+            }
+
+            var lista_carrito = [];
+            $("input.input-cantidad").each(function (i) {
+                var producto = $(this).data("oProducto");
+                var cantidad = parseFloat($(this).val())
+                lista_carrito.push({
+                    oProducto: producto,
+                    Cantidad : cantidad
+                })
+            })
+
+            jQuery.ajax({
+                url: "@Url.Action("ProcesarPago", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ oListaCarrito : lista_carrito, oVenta : venta }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $.LoadingOverlay("hide");
+                    if (data.Status) {
+                        var jsonresult = data.Response;
+                        var links = jsonresult.links;
+                        var resultado = links.find(item => item.rel === "approve")
+                        window.location.href = resultado.href;
+                    } else {
+                        swal("Lo Sentimos", "Vuelva a intentarlo mas tarde", "warning");
+                    }
+                },
+                beforeSend: function () {
+                    $.LoadingOverlay("show");
+                },
+                error: function (error) {
+                    $.LoadingOverlay("hide");
+                }
+            })
+
+        }
+
+
+
+    </script>    
+
+
+}
+

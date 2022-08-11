@@ -1,0 +1,43 @@
+﻿/*
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░        CARRITO DE COMPRAS / MVC ASP.NET ADO.NET          ░
+░--------------------------------------------------------- ░
+░- -> IDEA ORIGINAL POR PARTE DE [ CODIGO ESTUDIANTE ]     ░
+░--------------------------------------------------------- ░
+░- -> ADECUADO Y MODIFICADO POR DANIEL RIVERA              ░
+░--------------------------------------------------------- ░
+░- -> C# - ASP.NET / ADO.NET => .NET FRAMEWORK 4.7 up+     ░
+░- -> GITHUB: (danielrivera03)                             ░
+░     https://github.com/DanielRivera03                    ░
+░--------------------------------------------------------- ░
+░- -> TODOS LOS DERECHOS RESERVADOS © 2022                 ░
+░                                                          ░
+░        ♥♥ HECHO CON ALGUNAS TAZAS DE CAFE ♥♥             ░
+░                                                          ░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+-> POR FAVOR REALIZAR TODAS LAS ADECUACIONES PERTINENTES
+       
+*/
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CapaEntidad
+{
+    public class DetalleVenta
+    {
+        public int IdDetalleVenta { get; set; }
+        public int IdVenta { get; set; }
+        public int IdProducto { get; set; }
+        // REFERENCIA AL OBJETO ID PRODUCTO DE LA CLASE PRODUCTO
+        public Producto oProducto { get; set; }
+        public int Cantidad { get; set; }
+        public decimal Total { get; set; }
+        public string IdTransaccion { get; set; }
+    }
+}
