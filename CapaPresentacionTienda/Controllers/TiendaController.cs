@@ -264,8 +264,9 @@ namespace CapaPresentacionTienda.Controllers
                     brand_name = "MIURL.COM",
                     landing_page = "NO_PREFERENCE",
                     user_action = "PAY_NOW",
-                    return_url = "https://localhost:44351/Tienda/PagoEfectuado",
-                    cancel_url = "https://localhost:44351/Tienda/Carrito"
+                    // CAMBIAR POR URL DE SU SERVIDOR
+                    return_url = "xxxxxxx/Tienda/PagoEfectuado",
+                    cancel_url = "xxxxxxx/Tienda/Carrito"
                 }
             };
             oVenta.MontoTotal = total;
