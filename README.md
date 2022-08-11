@@ -7,7 +7,7 @@
 
 <p>Estimado(a) visitante, reciba una cordial bienvenida a este repositorio. Antes de iniciar y ejecutar este sistema en su servidor, debe realizar algunas configuraciones correspondientes para el óptimo funcionamiento del mismo, las cuales son las siguientes:
 
-<h4>* Archivo de conexion (Web.config)</h4>
+<h4>* Archivo de conexión (Web.config)</h4>
 
 Usted debe de realizar los correspondientes cambios a la cadena de conexión, dicho archivo se llama <strong>Web.config</strong> en dónde Data Source= es el nombre de su servidor, Initial Catalog= el nombre de la base de datos, User ID=;Password= nombre de usuario y contraseña de acceso de su usuario configurado en su SGBD SQL SERVER. <strong>Único punto en dónde usted deberá conectar la base de datos a esta aplicación. NO se utilizan más cadenas de conexiones.</strong>
 
@@ -47,12 +47,18 @@ Y de esta manera hemos concluído con éxito toda la configuración necesaria pa
 </p>
 
 
+<h1>Importante</h1>
+
+<p>Se ha compartido todas las sentencias SQL que usted necesita para crear la respectiva base de datos. <strong>Esta en total libertad de dar el nombre que usted desee al momento de crear la misma, pero deberá reflejar ese cambio en el archivo de conexión de la aplicación correspondiente.</strong> Al momento de registrar los respectivos productos, usted se dará cuenta que hay una columna llamada <strong>RutaImagen</strong> en dónde usted deberá asignar su URL completa de su máquina en específico. Si usted no realiza este cambio, lamentamos informarle que las imágenes no se mostrarán al momento de ejecutar está aplicación. <strong>La URL por defecto es la siguiente: C:\Users\dany_\OneDrive\Escritorio\CarritoMVC\FotosProductos  -> Usted debe cambiar según la ubicación en dónde ejecute esta aplicación.</strong></p>
+
+
+
 <h1>Descripción General</h1>
 
 <p>Sistema desarrollado para simular las típicas tiendas en línea, en dónde usted puede agregar los productos ofertados a un carrito de compras, elegir la cantidad de artículos de cada uno de los elementos que usted agregué y realizar la respectiva compra de los mismos. En este caso únicamente se ha manejado la interfaz de clientes, no existen más roles de usuarios, ni un panel de administración para realizar las respectivas tareas de gestión de inventarios y productos de una tienda, pero perfectamente pueden ser integradas si usted decide mejorar y añadir dichas funcionalidades.</p>
 
 
-<p>Este sistema a nivel de código y base de datos se encuentra distribuido de la siguiente manera:<ul><li>Base de Datos:</li><ul><li>10 Tablas + 1 Tabla Virtual.</li><li>6 Procedimientos Almacenados.</li><li>1 Función.</li></ul></ul><ul><li>Sistema:</li><ul><li>Lenguaje de Programación C# ASP.NET - ADO.NET.</li><li>Patrón MVC (Modelo, Vista, Controlador).</li><li>Gestiones AJAX, JQuery.</li><li>Complementos JQuery, Javascript</li><li>Plantilla Bootstrap.</li><li>Mantenimientos y gestiones asíncronos, es decir, todo se realiza en tiempo real sin refrescar la página.</li></ul></ul></p>
+<p>Este sistema a nivel de código y base de datos se encuentra distribuido de la siguiente manera:<ul><li>Base de Datos:</li><ul><li>10 Tablas + 1 Tabla Virtual.</li><li>6 Procedimientos Almacenados.</li><li>1 Función.</li></ul></ul><ul><li>Sistema:</li><ul><li>Lenguaje de Programación C# ASP.NET - ADO.NET.</li><li>Patrón MVC (Modelo, Vista, Controlador).</li><li>Gestiones AJAX, JQuery.</li><li>Desarrollo basado en capas (Capa de Negocio, Capa de Datos, Capa de Presentación).</li><li>Complementos JQuery, Javascript</li><li>Envío de Correos Automáticos - SMTP .NET.</li><li>Plantilla Bootstrap.</li><li>Mantenimientos y gestiones asíncronos, es decir, todo se realiza en tiempo real sin refrescar la página.</li></ul></ul></p>
 
 
 <h1>Capturas</h1>
@@ -132,6 +138,15 @@ Y de esta manera hemos concluído con éxito toda la configuración necesaria pa
 
 
 
+
+<h4>* Recepción de correos automáticos - recuperación de cuentas clientes</h4>
+
+
+![cc14](https://user-images.githubusercontent.com/44457989/184247251-5f4a679d-176d-4495-a0d4-62ebf3e6ce4d.png)
+
+
+
+
 ---
 
 <h2>Créditos correspondientes dentro de código fuente de esta aplicación | Muchas gracias por obtener este repositorio hecho con algunas tazas de café ☕ ❤️</h2>
@@ -140,6 +155,10 @@ Y de esta manera hemos concluído con éxito toda la configuración necesaria pa
 
 
  ![CSharp](https://user-images.githubusercontent.com/44457989/70968018-afb2cf00-205d-11ea-9b79-2ff5a0a100ac.png)<br>
+ 
+ 
+ 
+ <h4>*** Fecha de Subida: 11 agosto 2022 ***</h4>
 
 
 
