@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -134,10 +134,16 @@
 
 @section scripts {
     <script>
+
+
+
         $(document).ready(function () {
             MostrarCategorias();
             MostrarProductos(0,0);
         })
+
+
+
         // LISTAR TODAS LAS CATEGORIAS
         function MostrarCategorias() {
             jQuery.ajax({
@@ -164,6 +170,10 @@
                 }
             })
         }
+
+
+
+
         // LISTAR TODAS LAS MARCAS
         function MostrarMarca() {
             var _idcategoria = $("input[name=categoria]:checked").val()
@@ -193,10 +203,14 @@
             })
         }
 
+
+
         // LISTAR TODAS LAS MARCAS ASOCIADAS A [XXXX] CATEGORIA
         $(document).on("change", "input[name=categoria]", function () {
             MostrarMarca();
         })
+
+
 
 
         // LISTAR TODAS LAS MARCAS
@@ -243,12 +257,18 @@
                 }
             })
         }
+
+
+
         // APLICAR FILTROS SOLAMENTE AL HACER CLIC EN EL BOTON
         $("#btnaplicarfiltro").click(function () {
             var _idcategoria = $("input[name=categoria]:checked").val()
             var _idmarca = $("input[name=marca]:checked").val()
             MostrarProductos(_idcategoria, _idmarca)
         })
+
+
+
 
         // AGREGAR PRODUCTOS AL CARRITO DE COMPRAS
         $(document).on("click", "button.agregarcarrito", function () {
