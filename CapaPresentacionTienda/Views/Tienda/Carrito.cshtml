@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -128,15 +128,22 @@
 
         // EJECUTAR FUNCIONES DENTRO DE TODO EL DOCUMENTO
         $(document).ready(function () {
+
+
             // LISTAR TODOS LOS PRODUCTOS AGREGADOS EN CARRITO DE COMPRAS
             jQuery.ajax({
                 url: "@Url.Action("ListarProductosCarrito", "Tienda")",
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
+
+
                 success: function (response) {
                     $("#productos-carrito").html(""); // LIMPIAR CONTENEDOR PRINCIPAL
                     $("#productos-carrito").LoadingOverlay("hide");
+
+
+
                     // IMPRIMIR TODOS LOS PRODUCTOS
                     $.each(response.data, function (i, item) {
                         $("<div>").addClass("card mb-2 card-producto").append(
@@ -187,6 +194,7 @@
         })
 
 
+
         function ListarDepartamento() {
             $("<option>").attr({"value": "0", "disabled": "disabled", "selected": "true" }).text("Seleccione una opcion...").appendTo("#cbodepartamento");
             jQuery.ajax({
@@ -204,6 +212,9 @@
                 }
             })
         }
+
+
+
 
         function ListarProvincia() {
             $("#cboprovincia").html("");
@@ -224,6 +235,9 @@
                 }
             })
         }
+
+
+
 
         function ListarDistrito() {
             $("#cbodistrito").html("");
@@ -275,6 +289,8 @@
             var input_cantidad = $(div_contenedor).find("input.input-cantidad");
             var btn = $(this);
             var idproducto = $(input_cantidad).data("oProducto").IdProducto;
+
+
             jQuery.ajax({
                 url: "@Url.Action("OperacionCarrito", "Tienda")",
                 type: "POST",
@@ -301,6 +317,9 @@
             })
 
         })
+
+
+
 
         // RESTAR ELEMENTOS A PRODUCTOS AGREGADOS EN CARRITO DE COMPRAS
         $(document).on("click", ".btn-restar", function () {
