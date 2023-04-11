@@ -1,3 +1,6 @@
 * linguist-vendored
 *.js linguist-vendored=false
-*.sql linguist-vendored=false
+*.css linguist-language=SCSS
+*.cs linguist-vendored=false
+*.html linguist-language=ASP
+*.sql linguist-language=SQL Server
