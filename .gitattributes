@@ -3,3 +3,4 @@
 *.cs linguist-vendored=false
 *.html linguist-language=ASP
 *.sql linguist-language=SQL Server
+*.css linguist-language=SCSS
